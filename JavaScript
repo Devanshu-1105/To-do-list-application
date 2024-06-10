@@ -1,0 +1,23 @@
+const container = document.querySelector(".inputfil")
+const input = document.querySelector("#input")
+const submitBtn = document.querySelector("#Submit")
+const container2 = document.querySelector(".tasks")
+
+submitBtn.addEventListener("click",addText);
+
+function addText (event) {
+    event.preventDefault()
+    if (input.value === "") {
+        alert("Add a Task")
+        
+    } else { 
+        let newEle = document.createElement("ul");
+        newEle.innerHTML=`${input.value} <i class="fa-solid fa-trash"></i>`;
+        container2.appendChild(newEle);
+        input.value="";
+        newEle.querySelector("i").addEventListener("click",remove)
+        function remove(){
+            newEle.remove()
+        }
+    }
+}
